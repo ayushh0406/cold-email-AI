@@ -1,6 +1,6 @@
 # 📧 Cold Email Generator
 
-**Cold Email Generator** is an AI-powered tool that helps service companies generate personalized cold emails. It extracts job listings from a company's careers page and crafts outreach emails, including relevant portfolio links fetched from a vector database.
+**Cold Email Generator** is an AI-powered tool that helps service companies generate personalized cold emails. It extracts job listings from a company's careers page and crafts outreach emails, including relevant portfolio links fetched from a vector database..
 
 ---
 
