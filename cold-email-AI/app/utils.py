@@ -1,16 +1,23 @@
 import re
 
-def clean_text(text):
+def clean_text(text: str) -> str:
+    """
+    Clean raw scraped text by removing HTML, URLs, special characters,
+    and extra whitespace while preserving useful content.
+    """
+    if not text:
+        return ""
+
     # Remove HTML tags
-    text = re.sub(r'<[^>]*?>', '', text)
+    text = re.sub(r"<.*?>", " ", text)
+
     # Remove URLs
-    text = re.sub(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', '', text)
-    # Remove special characters
-    text = re.sub(r'[^a-zA-Z0-9 ]', '', text)
-    # Replace multiple spaces with a single space
-    text = re.sub(r'\s{2,}', ' ', text)
-    # Trim leading and trailing whitespace
-    text = text.strip()
-    # Remove extra whitespace
-    text = ' '.join(text.split())
+    text = re.sub(r"http[s]?://\S+", " ", text)
+
+    # Keep alphanumerics & basic punctuation (.,!?-), remove junk
+    text = re.sub(r"[^a-zA-Z0-9.,!? \-]", " ", text)
+
+    # Normalize whitespace
+    text = re.sub(r"\s+", " ", text).strip()
+
     return text
